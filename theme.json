@@ -1,0 +1,163 @@
+{
+    "version": 2,
+    "settings": {
+        "typography": {
+            "fontFamilies": [
+                {
+                    "fontFamily": "Raleway",
+                    "name": "Raleway",
+                    "slug": "raleway",
+                    "fontFace": [
+                        {
+                            "fontFamily": "Raleway",
+                            "fontWeight": "400",
+                            "fontStyle": "normal",
+                            "src": [
+                                "file:./fonts/static/Raleway-Regular.ttf"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Raleway",
+                            "fontWeight": "700",
+                            "fontStyle": "normal",
+                            "src": [
+                                "file:./fonts/static/Raleway-Bold.ttf"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Raleway",
+                            "fontWeight": "700",
+                            "fontStyle": "italic",
+                            "src": [
+                                "file:./fonts/static/Raleway-BoldItalic.ttf"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Raleway",
+                            "fontWeight": "900",
+                            "fontStyle": "normal",
+                            "src": [
+                                "file:./fonts/static/Raleway-ExtraBold.ttf"
+                            ]
+                        },
+                        {
+                            "fontFamily": "Raleway",
+                            "fontWeight": "900",
+                            "fontStyle": "italic",
+                            "src": [
+                                "file:./fonts/static/Raleway-ExtraBoldItalic.ttf"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "fontFamily": "FontAwesome Brands",
+                    "name": "FontAwesome Brands",
+                    "slug": "fa-brands",
+                    "fontFace": [
+                        {
+                            "fontFamily": "FontAwesome Brands",
+                            "fontWeight": "400",
+                            "fontStyle": "normal",
+                            "src": [
+                                "file:./fonts/fa-brands-400.woff2",
+                                "file:./fonts/fa-brands-400.ttf"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "fontFamily": "FontAwesome",
+                    "name": "FontAwesome",
+                    "slug": "fa",
+                    "fontFace": [
+                        {
+                            "fontFamily": "FontAwesome",
+                            "fontWeight": "900",
+                            "fontStyle": "normal",
+                            "src": [
+                                "file:./fonts/fa-solid-900.woff2",
+                                "file:./fonts/fa-solid-900.ttf"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "customFontFamilies": false
+        },
+        "color": {
+            "palette": [
+                {
+                    "slug": "contrast",
+                    "color": "#222222",
+                    "name": "Contrast"
+                },
+                {
+                    "slug": "base",
+                    "color": "#ffffff",
+                    "name": "Base"
+                },
+                {
+                    "slug": "accent-1",
+                    "color": "#03254C",
+                    "name": "Accent 1"
+                },
+                {
+                    "slug": "accent-2",
+                    "color": "#EE913F",
+                    "name": "Accent 2"
+                },
+                {
+                    "slug": "accent-3",
+                    "color": "#1167B1",
+                    "name": "Accent 3"
+                },
+                {
+                    "slug": "accent-4",
+                    "color": "#686868",
+                    "name": "Accent 4"
+                },
+                {
+                    "slug": "accent-5",
+                    "color": "#FBFAF3",
+                    "name": "Accent 5"
+                },
+                {
+                    "slug": "accent-6",
+                    "color": "rgba(0, 0, 0, 0.1)",
+                    "name": "Accent 6"
+                }
+            ],
+            "defaultPalette": false,
+            "custom": false
+        }
+    },
+    "styles": {
+        "typography": {
+            "fontFamily": "var(--wp--preset--font-family--raleway)"
+        },
+        "color": {
+            "background": "var(--wp--preset--color--base)",
+            "text": "var(--wp--preset--color--contrast)"
+        },
+        "elements": {
+            "heading": {
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--raleway)"
+                },
+                "color": {
+                    "text": "var(--wp--preset--color--primary)"
+                }
+            },
+            "button": {
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--raleway)"
+                }
+            },
+            "color": {
+                "background": "var(--wp--preset--color--primary)",
+                "text": "var(--wp--preset--color--base)"
+            }
+        }
+    }
+}

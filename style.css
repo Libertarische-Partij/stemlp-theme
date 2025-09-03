@@ -1,0 +1,30 @@
+/*
+ Theme Name:   stemlp
+ Theme URI:    https://stemlp.nl/
+ Description:  Child theme for Twenty Twenty-Five
+ Author:       stemlp
+ Author URI:   https://stemlp.nl/
+ Template:     twentytwentyfive
+ Version:      0.0.1
+*/
+
+/* Add your custom CSS below */
+.footer-nav ul li a::before {
+    content: "\f061";
+    display: inline-block;
+    font-family: "FontAwesome";
+    font-weight: 900;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #666666;
+  }
+
+.footer-title:before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--wp--preset--color--accent-1);
+    margin-right: 10px;
+    border-radius: 50%;
+}
