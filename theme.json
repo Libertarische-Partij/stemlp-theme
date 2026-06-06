@@ -1,163 +1,177 @@
 {
-    "version": 2,
-    "settings": {
-        "typography": {
-            "fontFamilies": [
-                {
-                    "fontFamily": "Raleway",
-                    "name": "Raleway",
-                    "slug": "raleway",
-                    "fontFace": [
-                        {
-                            "fontFamily": "Raleway",
-                            "fontWeight": "400",
-                            "fontStyle": "normal",
-                            "src": [
-                                "file:./fonts/static/Raleway-Regular.ttf"
-                            ]
-                        },
-                        {
-                            "fontFamily": "Raleway",
-                            "fontWeight": "700",
-                            "fontStyle": "normal",
-                            "src": [
-                                "file:./fonts/static/Raleway-Bold.ttf"
-                            ]
-                        },
-                        {
-                            "fontFamily": "Raleway",
-                            "fontWeight": "700",
-                            "fontStyle": "italic",
-                            "src": [
-                                "file:./fonts/static/Raleway-BoldItalic.ttf"
-                            ]
-                        },
-                        {
-                            "fontFamily": "Raleway",
-                            "fontWeight": "900",
-                            "fontStyle": "normal",
-                            "src": [
-                                "file:./fonts/static/Raleway-ExtraBold.ttf"
-                            ]
-                        },
-                        {
-                            "fontFamily": "Raleway",
-                            "fontWeight": "900",
-                            "fontStyle": "italic",
-                            "src": [
-                                "file:./fonts/static/Raleway-ExtraBoldItalic.ttf"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "fontFamily": "FontAwesome Brands",
-                    "name": "FontAwesome Brands",
-                    "slug": "fa-brands",
-                    "fontFace": [
-                        {
-                            "fontFamily": "FontAwesome Brands",
-                            "fontWeight": "400",
-                            "fontStyle": "normal",
-                            "src": [
-                                "file:./fonts/fa-brands-400.woff2",
-                                "file:./fonts/fa-brands-400.ttf"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "fontFamily": "FontAwesome",
-                    "name": "FontAwesome",
-                    "slug": "fa",
-                    "fontFace": [
-                        {
-                            "fontFamily": "FontAwesome",
-                            "fontWeight": "900",
-                            "fontStyle": "normal",
-                            "src": [
-                                "file:./fonts/fa-solid-900.woff2",
-                                "file:./fonts/fa-solid-900.ttf"
-                            ]
-                        }
-                    ]
-                }
-            ],
-            "customFontFamilies": false
-        },
-        "color": {
-            "palette": [
-                {
-                    "slug": "contrast",
-                    "color": "#222222",
-                    "name": "Contrast"
-                },
-                {
-                    "slug": "base",
-                    "color": "#ffffff",
-                    "name": "Base"
-                },
-                {
-                    "slug": "accent-1",
-                    "color": "#03254C",
-                    "name": "Accent 1"
-                },
-                {
-                    "slug": "accent-2",
-                    "color": "#EE913F",
-                    "name": "Accent 2"
-                },
-                {
-                    "slug": "accent-3",
-                    "color": "#1167B1",
-                    "name": "Accent 3"
-                },
-                {
-                    "slug": "accent-4",
-                    "color": "#686868",
-                    "name": "Accent 4"
-                },
-                {
-                    "slug": "accent-5",
-                    "color": "#FBFAF3",
-                    "name": "Accent 5"
-                },
-                {
-                    "slug": "accent-6",
-                    "color": "rgba(0, 0, 0, 0.1)",
-                    "name": "Accent 6"
-                }
-            ],
-            "defaultPalette": false,
-            "custom": false
-        }
-    },
-    "styles": {
-        "typography": {
-            "fontFamily": "var(--wp--preset--font-family--raleway)"
-        },
-        "color": {
-            "background": "var(--wp--preset--color--base)",
-            "text": "var(--wp--preset--color--contrast)"
-        },
-        "elements": {
-            "heading": {
-                "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--raleway)"
-                },
-                "color": {
-                    "text": "var(--wp--preset--color--primary)"
-                }
+  "version": 2,
+  "settings": {
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Barlow Condensed\", sans-serif",
+          "name": "Barlow Condensed",
+          "slug": "barlow-condensed",
+          "fontFace": [
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-Regular.ttf"
+              ]
             },
-            "button": {
-                "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--raleway)"
-                }
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-Bold.ttf"
+              ]
             },
-            "color": {
-                "background": "var(--wp--preset--color--primary)",
-                "text": "var(--wp--preset--color--base)"
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "700",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-BoldItalic.ttf"
+              ]
+            },
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "800",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-ExtraBold.ttf"
+              ]
+            },
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "800",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-ExtraBoldItalic.ttf"
+              ]
+            },
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "900",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-Black.ttf"
+              ]
+            },
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontWeight": "900",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/BarlowCondensed/BarlowCondensed-BlackItalic.ttf"
+              ]
             }
+          ]
+        },
+        {
+          "fontFamily": "FontAwesome",
+          "name": "FontAwesome",
+          "slug": "fa",
+          "fontFace": [
+            {
+              "fontFamily": "FontAwesome",
+              "fontWeight": "900",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/fa-solid-900.woff2",
+                "file:./assets/fonts/fa-solid-900.ttf"
+              ]
+            }
+          ]
         }
+      ],
+      "customFontFamilies": false
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "contrast",
+          "color": "#000",
+          "name": "Contrast"
+        },
+        {
+          "slug": "base",
+          "color": "#fff",
+          "name": "Base"
+        },
+        {
+          "slug": "accent-1",
+          "color": "#03254C",
+          "name": "Accent 1"
+        },
+        {
+          "slug": "accent-2",
+          "color": "#0071cf",
+          "name": "Accent 2"
+        },
+        {
+          "slug": "accent-3",
+          "color": "rgb(0,0,0,0.35)",
+          "name": "Accent 3"
+        },
+        {
+          "slug": "accent-4",
+          "color": "#ed821f",
+          "name": "Accent 4"
+        },
+        {
+          "slug": "accent-5",
+          "color": "#f3882a",
+          "name": "Accent 5"
+        },
+        {
+          "slug": "accent-6",
+          "color": "#ec6520",
+          "name": "Accent 6"
+        }
+      ],
+      "defaultPalette": false,
+      "custom": false
     }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--barlow-condensed)"
+    },
+    "color": {
+      "background": "var(--wp--preset--color--base)",
+      "text": "var(--wp--preset--color--contrast)"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)"
+        },
+        "color": {
+          "text": "var(--wp--preset--color--primary)"
+        }
+      },
+      "button": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)"
+        }
+      },
+      "color": {
+        "background": "var(--wp--preset--color--primary)",
+        "text": "var(--wp--preset--color--base)"
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "area": "header",
+      "name": "header",
+      "title": "Header",
+      "description": "Default site header with logo, buttons, and page hero."
+    },
+    {
+      "area": "footer",
+      "name": "footer",
+      "title": "Footer",
+      "description": "Default site footer with diagonal and columns."
+    }
+  ]
 }

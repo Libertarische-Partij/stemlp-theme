@@ -1,0 +1,189 @@
+/**
+ * Posts carousel block styles.
+ * Uses theme globals: --button-slant, --gradient-brand (from :root).
+ */
+/* Posts carousel block: centered on page; show 3 items at a time (change --carousel-items-visible to adjust) */
+.stemlp-carousel {
+  --carousel-gap: 1rem;
+  --carousel-items-visible: 3;
+  --carousel-item-width: calc((100% - (var(--carousel-gap) * (var(--carousel-items-visible) - 1))) / var(--carousel-items-visible));
+  --carousel-title-padding-x: 0.5rem;
+  --carousel-title-skew-extend: 0.75rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+  box-sizing: border-box;
+}
+
+.stemlp-carousel--empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+.stemlp-carousel__empty {
+  margin: 0;
+}
+
+.stemlp-carousel__track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--carousel-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stemlp-carousel__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.stemlp-carousel__track::-webkit-scrollbar-track {
+  background: var(--wp--preset--color--base, #fff);
+}
+
+.stemlp-carousel__track::-webkit-scrollbar-thumb {
+  background: var(--wp--preset--color--contrast, #000);
+  border-radius: 0;
+}
+
+.stemlp-carousel__item {
+  flex: 0 0 var(--carousel-item-width);
+  min-width: 0;
+  max-width: var(--carousel-item-width);
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.stemlp-carousel__link {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-decoration: none;
+  color: var(--wp--preset--color--base, #fff);
+  background: var(--gradient-brand);
+  border-radius: 0;
+  overflow: visible;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--carousel-title-skew-extend);
+  box-sizing: border-box;
+}
+
+.stemlp-carousel__link:hover {
+  box-shadow: var(--shadow, none);
+  transform: translateY(-2px);
+}
+
+.stemlp-carousel__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  object-fit: cover;
+  margin-top: 0;
+}
+
+.stemlp-carousel__image--placeholder {
+  min-height: 120px;
+  background: linear-gradient(135deg, var(--wp--preset--color--base, #fff) 0%, #e0e0e0 100%);
+}
+
+.stemlp-carousel__title {
+  position: relative;
+  max-width: 100%;
+  z-index: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 1.3;
+  color: var(--wp--preset--color--contrast, #000);
+  text-transform: uppercase;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  flex-shrink: 0;
+  background: none;
+}
+
+.stemlp-carousel__title::before {
+  content: "";
+  position: absolute;
+  left: -0.4rem;
+  right: -0.4rem;
+  top: calc(-1 * var(--carousel-title-skew-extend));
+  bottom: -0.25rem;
+  background: var(--wp--preset--color--base, #fff);
+  transform: skewX(var(--button-slant));
+  z-index: -1;
+  pointer-events: none;
+  margin-top: 0.5rem;
+}
+
+.stemlp-carousel__link .stemlp-carousel__image {
+  margin-top: 0.5rem;
+  padding: 0 0.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 782px) {
+  .stemlp-carousel {
+    --carousel-items-visible: 1;
+  }
+
+  .stemlp-carousel__track {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .stemlp-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stemlp-carousel__item {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 783px) and (max-width: 1023px) {
+  .stemlp-carousel {
+    --carousel-items-visible: 2;
+  }
+
+  .stemlp-carousel__track {
+    flex-direction: row;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .stemlp-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stemlp-carousel__item {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+.alignwide .stemlp-carousel__track,
+.alignfull .stemlp-carousel__track {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}

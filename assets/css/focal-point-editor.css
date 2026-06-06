@@ -1,0 +1,3 @@
+.stemlp-has-featured-image-focal-point img {
+  object-position: var(--featured-image-focal-point, 50% 50%);
+}

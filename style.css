@@ -9,22 +9,1031 @@
 */
 
 /* Add your custom CSS below */
+
+/* Typography: titles = Bold Italic, body = Medium (only font rules in this file) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.wp-block-heading,
+[class*="wp-block-heading"],
+.wp-block-button__link,
+.button-main-link,
+.em .button,
+.em .em-button,
+.em-button {
+  font-weight: 700;
+  font-style: italic;
+}
+
+body,
+p,
+.wp-block-paragraph,
+main {
+  font-weight: 500;
+}
+
+/* Main button: black parallelogram (slanted), bold caps, white left/bottom outline */
+/* Slant matches typical italic angle (~10°) so skew and italic text align */
+:root {
+  /* Larger than parent theme default (e.g. 18px vs 16px) */
+  --shadow: 0 2px 6px var(--wp--preset--color--accent-3, rgba(0, 0, 0, 0.35));
+  font-size: 1.25rem;
+  --button-slant: -10deg;
+  /* Slope: diagonal cut (same angle). slope = bottom edge left raised (header bar). slope-inverse = top edge left lowered (footer) or bottom edge right raised (hero). */
+  --slope: 50px;
+  --slope-inverse: 50px;
+  /* Fixed header bar: logo + vertical padding (hero starts below this). */
+  --site-header-offset: calc(90px + 2rem);
+  /* Override WP preset spacing 50 */
+  --wp--preset--spacing--60: 2rem;
+  --wp--preset--spacing--50: 0;
+  /* Brand gradient: hero, footer, header button, carousel (reused) */
+  --gradient-brand: linear-gradient(to right, var(--wp--preset--color--accent-4, #ed821f) 0%, var(--wp--preset--color--accent-5, #f3822a) 65%, var(--wp--preset--color--accent-6, #ec6520) 100%);
+  --egel-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85.92 70.82'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:url(%23Naamloos_verloop_56)}%3C/style%3E%3ClinearGradient id='Naamloos_verloop_56' x1='0' y1='35.41' x2='85.92' y2='35.41' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23fad4a4'/%3E%3Cstop offset='.71' stop-color='%23f9cc8e'/%3E%3Cstop offset='1' stop-color='%23f7c278'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath class='cls-1' d='M84.64,34.2c-1.87-1.4-4.44.34-4.98,2.56-5.06-.14-8.47-5.12-9.3-9.71-.51-5.34-1.31-11.23-5.65-14.89,0,0-.02,2.97-1.11,5.63,0,0-1.66-12.98-11.3-15.61,0,0,2.64,6.07,1.95,9.73-.02.14-.05.32-.2.15C51.22,5.71,44.96.59,37.88,0c3.23,3.02,5.99,6.76,5.63,11.55-5.68-7-15.33-10.52-24.09-7.86-.12.06-.17,0-.13.22,4.72,1.05,9.18,4.85,10.35,9.65-6-4.66-15.36-4.34-21.2.45,4.58-.22,9.35,1.52,11.86,5.52-6.74-2-14.2.9-18.19,6.63.15.19.12.12.27.07,4.01-1.9,8.57-1.38,12.19,1.19-7.22.41-13.07,6.2-14.57,13.11.06.14.19.01.27-.03,3.44-2.5,7.68-4.69,12.09-4.04-6.59,2.77-10.21,9.59-9.54,16.63l.2.15c1.63-3.38,4.84-6.06,8.54-6.83-4.36,3.83-5.97,10.69-3.87,16.08.88-2.66,2.92-5.59,5.48-6.83-1.91,4.29-.39,9.66,3.42,12.36-.7-2.15-.56-4.51.85-6.33,1.19,4.67,2.77,6.44,5.77,7.82,0,0-.49-2.37.11-3.27,0,0,4.87,4.5,10.04,3.82,0,0-.8-.83-1.01-2.03,5.71.92,12.61-2.1,12.61-2.1,1.75,3.87,6.6,4.88,6.6,4.88,0,0-1.68-5.49,2.89-8.66,1.34,3.95,3.56,7.54,7.17,8.43,0,0-1.52-8.04,2.01-13.67,4-7.15,14.35-5.61,18.49-15.68,3.37.48,5.23-4.62,2.55-7.04Z'/%3E%3C/svg%3E");
+  /* Same as --egel-svg but horizontally flipped */
+  --egel-svg-flipped: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85.92 70.82'%3E%3Cg transform='translate(85.92,0) scale(-1,1)'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:url(%23Naamloos_verloop_56)}%3C/style%3E%3ClinearGradient id='Naamloos_verloop_56' x1='0' y1='35.41' x2='85.92' y2='35.41' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ec6520'/%3E%3Cstop offset='.71' stop-color='%23ed821f'/%3E%3Cstop offset='1' stop-color='%23ec6520'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath class='cls-1' d='M84.64,34.2c-1.87-1.4-4.44.34-4.98,2.56-5.06-.14-8.47-5.12-9.3-9.71-.51-5.34-1.31-11.23-5.65-14.89,0,0-.02,2.97-1.11,5.63,0,0-1.66-12.98-11.3-15.61,0,0,2.64,6.07,1.95,9.73-.02.14-.05.32-.2.15C51.22,5.71,44.96.59,37.88,0c3.23,3.02,5.99,6.76,5.63,11.55-5.68-7-15.33-10.52-24.09-7.86-.12.06-.17,0-.13.22,4.72,1.05,9.18,4.85,10.35,9.65-6-4.66-15.36-4.34-21.2.45,4.58-.22,9.35,1.52,11.86,5.52-6.74-2-14.2.9-18.19,6.63.15.19.12.12.27.07,4.01-1.9,8.57-1.38,12.19,1.19-7.22.41-13.07,6.2-14.57,13.11.06.14.19.01.27-.03,3.44-2.5,7.68-4.69,12.09-4.04-6.59,2.77-10.21,9.59-9.54,16.63l.2.15c1.63-3.38,4.84-6.06,8.54-6.83-4.36,3.83-5.97,10.69-3.87,16.08.88-2.66,2.92-5.59,5.48-6.83-1.91,4.29-.39,9.66,3.42,12.36-.7-2.15-.56-4.51.85-6.33,1.19,4.67,2.77,6.44,5.77,7.82,0,0-.49-2.37.11-3.27,0,0,4.87,4.5,10.04,3.82,0,0-.8-.83-1.01-2.03,5.71.92,12.61-2.1,12.61-2.1,1.75,3.87,6.6,4.88,6.6,4.88,0,0-1.68-5.49,2.89-8.66,1.34,3.95,3.56,7.54,7.17,8.43,0,0-1.52-8.04,2.01-13.67,4-7.15,14.35-5.61,18.49-15.68,3.37.48,5.23-4.62,2.55-7.04Z'/%3E%3C/g%3E%3C/svg%3E");
+  --stay-informed-svg: url("data:image/svg+xml,%3Csvg%20id%3D%27Laag_1%27%20data-name%3D%27Laag%201%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20viewBox%3D%270%200%20195.4%2093.88%27%3E%20%3Cdefs%3E%20%3Cstyle%3E%20.cls-1%20%7B%20fill%3A%20%23fff%3B%20%7D%20.cls-2%20%7B%20fill%3A%20url%28%23Naamloos_verloop_56%29%3B%20%7D%20.cls-3%20%7B%20fill%3A%20%23ec6521%3B%20%7D%20.cls-4%20%7B%20fill%3A%20%23ececec%3B%20%7D%20%3C%2Fstyle%3E%20%3ClinearGradient%20id%3D%27Naamloos_verloop_56%27%20data-name%3D%27Naamloos%20verloop%2056%27%20x1%3D%273.14%27%20y1%3D%2768.39%27%20x2%3D%27101.23%27%20y2%3D%2768.39%27%20gradientUnits%3D%27userSpaceOnUse%27%3E%20%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23ed8220%27%2F%3E%20%3Cstop%20offset%3D%27.71%27%20stop-color%3D%27%23ec6e20%27%2F%3E%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23ec6521%27%2F%3E%20%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Cg%3E%20%3Cpath%20class%3D%27cls-2%27%20d%3D%27M97.23%2C85.13c-1.31%2C4.15-3.65%2C6.76-6.31%2C8.75H9.55c1.62-2.99%2C4.1-5.53%2C7.34-7.21-5.12-.29-9.75%2C2.6-13.44%2C5.77-.09.06-.23.21-.31.06%2C1.02-7.96%2C7.14-15.09%2C15.37-16.27-4.41-2.54-9.69-2.67-14.09-.13-.16.08-.12.15-.31-.05%2C3.99-6.87%2C12.25-10.89%2C20.16-9.3-3.26-4.28-8.91-5.77-14.13-5.07%2C6.2-6%2C16.89-7.29%2C24.23-2.62-1.82-5.3-7.31-9.16-12.82-9.87-.07-.26-.01-.18.12-.27%2C9.76-3.87%2C21.16-.86%2C28.38%2C6.49-.07-5.45-3.6-9.41-7.61-12.5%2C8.17-.04%2C15.86%2C5.13%2C19.75%2C12.02.19.17.2-.04.21-.19.42-4.2-3.22-10.8-3.22-10.8%2C11.31%2C2%2C14.52%2C16.51%2C14.52%2C16.51.97-3.11.7-6.47.7-6.47%2C5.34%2C3.71%2C6.86%2C10.29%2C7.97%2C16.27%2C1.42%2C5.11%2C5.82%2C10.4%2C11.64%2C10.05.39-2.56%2C3.15-4.79%2C5.44-3.39%2C3.31%2C2.48%2C1.69%2C8.42-2.22%2C8.22Z%27%2F%3E%20%3Cpath%20class%3D%27cls-4%27%20d%3D%27M77.2%2C81.11c-.08%2C6.98-8.06%2C10.04-12.14%2C4.2-2.61-3.73-1.62-10.3%2C2.99-11.75%2C4.8-1.51%2C9.21%2C2.77%2C9.16%2C7.54Z%27%2F%3E%20%3Cpath%20d%3D%27M70.73%2C74.96c-1.81.16-3.13%2C1.97-2.94%2C4.05s1.8%2C3.64%2C3.61%2C3.49%2C3.13-1.97%2C2.94-4.05-1.8-3.64-3.61-3.49ZM71.87%2C78.27c-.55.05-1.04-.43-1.1-1.06s.34-1.18.89-1.23%2C1.04.43%2C1.1%2C1.06-.34%2C1.18-.89%2C1.23Z%27%2F%3E%20%3C%2Fg%3E%20%3Cg%3E%20%3Cg%3E%20%3Cpath%20d%3D%27M183.42%2C43.18c-1.39-1.4-3.09-2.13-5.01-3.14%2C1.23-1.84%2C2.58-3.47%2C3.59-5.41%2C1.65-3.19%2C2.15-6.73%2C1.49-10.25-.99-5.34-6.31-9.58-11.18-11.31-2.96-1.06-5.98-1.6-9.13-1.58-5.5.01-10.46%2C2.52-14.62%2C6.13-.21-6.73-2.52-12.08-9.09-14.24-8.3-2.01-17.58-.88-22.78%2C6.59-5.02-4.52-12.62-8.71-19.16-6.26-3.6%2C1.35-6.18%2C4.17-7.98%2C7.49-.77%2C1.44-1.47%2C2.67-1.73%2C4.36-.41%2C2.76.12%2C5.4%2C1.16%2C8.09-4.69.68-7.89%2C1.97-9.84%2C6.23-.53%2C1.15-1.02%2C2.16-1.36%2C3.4-1.05%2C3.8-.72%2C7.59%2C1.14%2C11.11%2C1.46%2C2.77%2C3.81%2C4.85%2C6.58%2C6.43%2C3.91%2C2.2%2C8.19%2C3.18%2C12.64%2C3.54%2C1.94.16%2C3.69.18%2C5.77-.27-.87%2C2.94-5.79%2C9.81-3.27%2C12.13.71.65%2C1.53.82%2C2.5.58%2C7.95-2.01%2C15.42-5.09%2C23.13-8.18.96%2C1.67%2C2.05%2C2.92%2C3.55%2C3.96%2C3.56%2C2.47%2C7.53%2C4%2C11.85%2C4.6%2C7.22.99%2C12.54-1.89%2C18.07-6.03%2C4.04%2C2.71%2C8.86%2C3.76%2C13.53%2C2.48%2C4.76-1.31%2C8.82-4.45%2C11.39-8.65%2C2.35-3.85%2C1.88-8.67-1.26-11.83ZM179%2C57.06c-5.71%2C4.83-13.14%2C3.71-19.23-.12-1.9%2C1.81-3.83%2C3.42-6.18%2C4.52-4.44%2C2.25-9.26%2C2.51-14.06%2C1.21-5.09-1.38-9.6-4.09-12.79-8.32l-16.89%2C6.51c-2.13.82-4.16%2C1.43-6.38%2C1.91-2.31%2C1.09%2C1.54-6.65%2C1.79-7.19l2.61-5.54c.14-.31.07-.69-.1-.84-.85-.79-1.27.74-4.24%2C1.08-5.61.65-11.33-.42-16.34-3.08-2.9-1.54-5.17-3.72-6.56-6.64-1.21-2.53-1.24-5.22-.86-7.94.43-3.07%2C2.09-5.48%2C5.03-6.65%2C2.4-.95%2C4.99-1.24%2C7.62-1.06.27.01.53-.02.63-.2.12-.2.16-.54-.02-.79-1.01-1.43-1.83-2.88-2.39-4.52-1.39-3.97-.46-8.09%2C2.44-11.11%2C1.78-1.85%2C3.81-3.31%2C6.37-3.83%2C6.17-1.26%2C12.67%2C2.94%2C16.99%2C6.97.37.35.84.13%2C1.04-.23%2C2.43-4.26%2C7.33-6.74%2C12.13-7.27%2C3.05-.34%2C6.08-.18%2C9.06.54%2C3.36.81%2C5.84%2C3.02%2C7.24%2C6.12%2C1.29%2C2.84%2C1.48%2C5.88%2C1.32%2C8.96%2C0%2C.17.32.4.34.53.04.19.44-.06.59-.21%2C5.08-5.26%2C12.13-8.52%2C19.57-6.68%2C4.26%2C1.06%2C8.22%2C3.27%2C11.29%2C6.36%2C2.45%2C2.46%2C3.18%2C5.85%2C2.24%2C9.09-1.22%2C4.18-4.48%2C8.03-7.68%2C10.83-.21.18-.29.4-.25.56.05.24.17.44.46.51%2C3.57.87%2C8.91%2C2.67%2C10.21%2C6.49%2C1.23%2C3.6-2.39%2C7.83-5%2C10.04Z%27%2F%3E%20%3Cpath%20class%3D%27cls-1%27%20d%3D%27M179%2C57.06c-5.71%2C4.83-13.14%2C3.71-19.23-.12-1.9%2C1.81-3.83%2C3.42-6.18%2C4.52-4.44%2C2.25-9.26%2C2.51-14.06%2C1.21-5.09-1.38-9.6-4.09-12.79-8.32l-16.89%2C6.51c-2.13.82-4.16%2C1.43-6.38%2C1.91-2.31%2C1.09%2C1.54-6.65%2C1.79-7.19l2.61-5.54c.14-.31.07-.69-.1-.84-.85-.79-1.27.74-4.24%2C1.08-5.61.65-11.33-.42-16.34-3.08-2.9-1.54-5.17-3.72-6.56-6.64-1.21-2.53-1.24-5.22-.86-7.94.43-3.07%2C2.09-5.48%2C5.03-6.65%2C2.4-.95%2C4.99-1.24%2C7.62-1.06.27.01.53-.02.63-.2.12-.2.16-.54-.02-.79-1.01-1.43-1.83-2.88-2.39-4.52-1.39-3.97-.46-8.09%2C2.44-11.11%2C1.78-1.85%2C3.81-3.31%2C6.37-3.83%2C6.17-1.26%2C12.67%2C2.94%2C16.99%2C6.97.37.35.84.13%2C1.04-.23%2C2.43-4.26%2C7.33-6.74%2C12.13-7.27%2C3.05-.34%2C6.08-.18%2C9.06.54%2C3.36.81%2C5.84%2C3.02%2C7.24%2C6.12%2C1.29%2C2.84%2C1.48%2C5.88%2C1.32%2C8.96%2C0%2C.17.32.4.34.53.04.19.44-.06.59-.21%2C5.08-5.26%2C12.13-8.52%2C19.57-6.68%2C4.26%2C1.06%2C8.22%2C3.27%2C11.29%2C6.36%2C2.45%2C2.46%2C3.18%2C5.85%2C2.24%2C9.09-1.22%2C4.18-4.48%2C8.03-7.68%2C10.83-.21.18-.29.4-.25.56.05.24.17.44.46.51%2C3.57.87%2C8.91%2C2.67%2C10.21%2C6.49%2C1.23%2C3.6-2.39%2C7.83-5%2C10.04Z%27%2F%3E%20%3Cpath%20d%3D%27M154.44%2C71.85c-3.75%2C1.64-9.08.54-11.57-3.01%2C4.31%2C3.15%2C11.21%2C2.05%2C14.72-2.17.2%2C2.3-1.11%2C4.29-3.15%2C5.18Z%27%2F%3E%20%3Cpath%20d%3D%27M193.05%2C27.38c-.92%2C3.65-4.2%2C4.83-7.67%2C4.43%2C2.23-.67%2C3.87-2.15%2C4.86-4.25.68-1.45%2C1.25-2.87%2C1.1-4.54%2C1.58.93%2C2.14%2C2.67%2C1.71%2C4.36Z%27%2F%3E%20%3Cpath%20d%3D%27M96.71%2C2.84c-6.45.78-7.63%2C1.88-9.65%2C8.36-.47-1.9-.51-4.03.46-5.92%2C1.68-3.27%2C5.94-4.02%2C9.19-2.44Z%27%2F%3E%20%3Cpath%20d%3D%27M186.05%2C28.19c.7-2.25%2C2.05-5.56-1.14-7.77%2C1.28-.41%2C2.8.11%2C3.61%2C1.2%2C1.38%2C1.89-.03%2C5.02-2.47%2C6.57Z%27%2F%3E%20%3C%2Fg%3E%20%3Cg%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M108.88%2C28.09c-.61.41-1.32.56-2.13.46l-2.53-.3s-.08-.03-.11-.06c-.02-.04-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l2.24.26c.81.09%2C1.42.35%2C1.82.77.4.42.56.98.48%2C1.7-.01.09-.04.25-.08.47-.22.89-.68%2C1.51-1.39%2C1.85-.04.02-.05.05-.02.08.48.49.68%2C1.12.59%2C1.9%2C0%2C.08-.04.22-.08.42-.19.86-.6%2C1.5-1.21%2C1.9ZM107.79%2C26.63c.22-.2.38-.5.48-.9.02-.06.03-.16.05-.29.04-.32%2C0-.58-.12-.78-.12-.2-.3-.32-.55-.34l-.61-.07s-.07.02-.09.06l-.58%2C2.42s0%2C.07.05.08l.59.07c.29.03.55-.05.77-.25ZM107.86%2C20.65l-.53%2C2.14s0%2C.07.05.08l.48.06c.35.04.64-.05.87-.28.23-.23.37-.56.42-1%2C.03-.29-.01-.53-.14-.69s-.32-.27-.59-.3l-.48-.06s-.07.01-.08.06Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M110.42%2C28.93s-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l1.56.18c.1.01.15.07.13.18l-1.86%2C7.65s0%2C.07.05.08l2.8.33c.1.01.15.07.13.18l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.03l-4.61-.54s-.08-.03-.11-.06Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M116.12%2C29.6s-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l1.56.18c.1.01.15.07.13.18l-2.24%2C9.2s-.04.08-.08.11c-.04.03-.08.04-.13.03l-1.56-.18s-.08-.03-.1-.06ZM119.7%2C29.58c-.37-.44-.52-1-.44-1.67%2C0-.08.03-.21.07-.4l.24-.94s.04-.08.08-.11c.04-.03.08-.04.12-.03l1.56.18c.1.01.15.07.13.18l-.24.97s-.03.09-.04.18c-.02.21.01.39.11.54.1.15.25.23.44.25.23.03.44-.03.62-.18.18-.15.3-.35.36-.62l1.69-6.94s.04-.08.08-.11c.04-.03.08-.04.12-.03l1.57.18s.08.03.1.06c.02.04.03.08.01.12l-1.69%2C6.91c-.18.77-.58%2C1.36-1.18%2C1.77-.6.41-1.3.57-2.09.48-.72-.08-1.26-.35-1.64-.79Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M131.99%2C23.36s-.08.04-.12.04l-2.79-.33s-.07.01-.08.06l-.53%2C2.15s.01.07.05.08l1.6.19s.08.03.1.06c.02.04.03.08.01.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.04l-1.59-.19c-.06%2C0-.09.01-.09.06l-.9%2C3.72s-.04.08-.08.11-.08.04-.13.03l-1.56-.18s-.08-.03-.1-.06c-.02-.04-.03-.07-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l4.58.54s.08.03.1.06c.02.04.03.08.01.12l-.32%2C1.32s-.04.08-.08.11Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M134.38%2C31.28c-.38-.46-.53-1.04-.44-1.75.01-.09.04-.24.08-.44l1.06-4.36c.2-.82.6-1.44%2C1.21-1.87.61-.43%2C1.33-.6%2C2.15-.5.75.09%2C1.31.36%2C1.7.82.38.46.54%2C1.05.45%2C1.75-.01.09-.04.24-.08.44l-1.06%2C4.36c-.2.82-.61%2C1.44-1.22%2C1.87-.61.43-1.33.6-2.15.5-.75-.09-1.31-.36-1.69-.82ZM137.13%2C30.26c.19-.16.32-.38.39-.67l1.1-4.52s.02-.09.03-.16c.03-.25-.01-.45-.12-.62-.11-.16-.28-.26-.5-.28-.25-.03-.47.04-.66.2-.19.16-.32.38-.39.67l-1.1%2C4.52s-.02.09-.03.16c-.03.25.01.45.12.62.11.16.27.26.48.28.26.03.48-.04.67-.19Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M146.53%2C24.07c.34.49.47%2C1.09.38%2C1.82-.03.23-.06.4-.09.52-.2.84-.59%2C1.49-1.16%2C1.95-.57.46-1.22.64-1.95.56l-.99-.12s-.07.02-.09.06l-.87%2C3.62s-.04.08-.08.11c-.04.03-.08.04-.13.03l-1.56-.18s-.08-.03-.11-.06c-.02-.04-.03-.08-.01-.12l2.24-9.21s.04-.08.08-.11c.04-.03.08-.04.12-.04l2.71.32c.67.08%2C1.18.36%2C1.52.85ZM144.52%2C27.06c.24-.25.39-.62.45-1.09.04-.32%2C0-.58-.13-.78s-.31-.31-.56-.34l-.59-.07s-.07.01-.08.06l-.59%2C2.39s.01.07.05.08l.59.07c.32.04.61-.07.85-.32Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M148.8%2C33.43s-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l2.42.28c.75.09%2C1.31.36%2C1.69.82.38.46.53%2C1.03.45%2C1.73-.01.09-.04.23-.08.41l-1.04%2C4.25c-.2.8-.6%2C1.41-1.2%2C1.83-.6.42-1.32.59-2.14.49l-2.42-.28s-.08-.03-.11-.06ZM151.1%2C32.05l.61.06c.24.02.46-.06.67-.24.2-.18.35-.44.43-.76l.97-4c.02-.05.03-.13.04-.23.03-.28%2C0-.5-.11-.68-.1-.18-.27-.28-.5-.3l-.59-.07s-.07.01-.08.06l-1.48%2C6.1s0%2C.07.05.08Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M161.88%2C26.86s-.08.04-.12.03l-2.8-.33s-.07.01-.08.06l-.53%2C2.15s.01.07.05.08l1.62.19s.08.03.1.06.03.08.01.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.03l-1.6-.19c-.06%2C0-.09.01-.09.06l-.52%2C2.17s0%2C.07.05.08l2.79.33s.08.03.11.06c.03.04.04.08.02.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.03l-4.6-.54s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11.08-.04.12-.03l4.6.54s.08.03.1.06c.02.04.03.08.01.12l-.32%2C1.32s-.04.08-.08.11Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M115.75%2C35.96s.08-.04.12-.03l1.57.18s.08.03.1.06c.02.04.03.08.01.12l-2.24%2C9.2s-.04.08-.08.11c-.04.03-.08.04-.12.04l-1.57-.18s-.08-.03-.1-.06-.03-.08-.01-.12l.91-3.71s-.01-.07-.05-.08l-1.34-.16c-.06%2C0-.09.01-.09.06l-.9%2C3.72s-.04.08-.08.11c-.04.03-.08.04-.13.03l-1.56-.18s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11.08-.04.12-.03l1.56.18c.1.01.15.07.13.18l-.91%2C3.7s.01.07.05.08l1.34.16s.07-.02.09-.06l.9-3.7s.04-.08.08-.11Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M117.34%2C45.38c-.38-.46-.53-1.04-.45-1.75.01-.09.04-.24.08-.44l1.06-4.36c.2-.82.6-1.44%2C1.21-1.87.61-.43%2C1.32-.6%2C2.14-.5.75.09%2C1.31.36%2C1.7.82.38.46.54%2C1.04.45%2C1.75-.01.09-.04.24-.08.44l-1.06%2C4.36c-.2.82-.61%2C1.44-1.22%2C1.87s-1.33.6-2.15.5c-.75-.09-1.31-.36-1.69-.82ZM120.09%2C44.36c.19-.16.32-.38.39-.67l1.1-4.52s.03-.09.03-.16c.03-.25-.01-.46-.12-.62-.11-.16-.28-.26-.5-.28-.25-.03-.47.04-.66.2-.19.16-.32.38-.39.67l-1.1%2C4.52s-.02.09-.03.16c-.03.25.01.45.12.62.11.16.27.26.48.28.26.03.48-.04.67-.19Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M123.66%2C46.12c-.38-.46-.53-1.04-.45-1.75.01-.09.04-.24.08-.44l1.06-4.36c.2-.82.6-1.44%2C1.21-1.87.61-.43%2C1.33-.6%2C2.15-.5.75.09%2C1.31.36%2C1.7.82.38.46.54%2C1.04.45%2C1.75-.01.09-.04.24-.08.44l-1.06%2C4.36c-.2.82-.61%2C1.44-1.22%2C1.87-.61.43-1.33.6-2.15.5-.75-.09-1.31-.36-1.69-.82ZM126.41%2C45.1c.19-.16.32-.38.39-.67l1.1-4.52s.02-.09.03-.16c.03-.25-.01-.45-.12-.62-.11-.16-.28-.26-.5-.28-.25-.03-.47.04-.66.2-.19.16-.32.38-.39.67l-1.1%2C4.52s-.02.09-.03.16c-.03.25.01.45.12.62.11.16.27.26.48.28.26.03.48-.03.67-.19Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M129.96%2C46.88c-.38-.45-.53-1.01-.45-1.69%2C0-.08.03-.21.07-.4l1.11-4.6c.19-.78.58-1.38%2C1.18-1.79.6-.41%2C1.31-.57%2C2.12-.47.73.08%2C1.28.35%2C1.66.8.38.45.53%2C1.02.45%2C1.7%2C0%2C.08-.03.21-.07.4l-.12.52s-.04.08-.08.11c-.04.03-.08.04-.13.03l-1.56-.18s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l.13-.54s.02-.09.03-.16c.03-.23-.01-.42-.12-.57-.11-.15-.27-.24-.48-.27-.23-.03-.44.04-.62.19-.19.15-.31.36-.38.63l-1.13%2C4.63c-.06.27-.04.5.06.69.1.18.26.29.5.32.24.03.45-.03.64-.18.19-.15.31-.36.38-.63l.27-1.09s-.01-.07-.05-.08l-.59-.07s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l.3-1.21s.03-.08.07-.11c.04-.03.08-.04.13-.03l2.38.28c.1.01.15.07.13.18l-.62%2C2.52c-.18.78-.58%2C1.38-1.19%2C1.79s-1.31.57-2.11.47c-.74-.09-1.29-.35-1.67-.8Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M143%2C39.15s.03.08.01.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.04l-1.68-.2s-.04%2C0-.05.01c-.02.01-.02.03-.03.05l-1.86%2C7.65s-.04.08-.08.11c-.04.03-.08.04-.12.03l-1.57-.18s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l1.86-7.65s0-.07-.05-.08l-1.6-.19c-.1-.01-.15-.07-.13-.18l.32-1.32s.04-.08.08-.11c.04-.03.08-.04.12-.04l5.32.62s.08.03.1.06Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M148.44%2C41.38s-.08.04-.12.03l-2.8-.33s-.07.02-.08.06l-.53%2C2.15s.01.07.05.08l1.62.19s.08.03.1.06c.02.03.03.08.01.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.03l-1.6-.19c-.06%2C0-.09.01-.09.06l-.52%2C2.17s0%2C.07.05.08l2.79.33s.08.03.11.06c.03.04.04.08.02.12l-.32%2C1.32s-.04.08-.08.11c-.04.03-.08.04-.12.03l-4.6-.54s-.08-.03-.1-.06c-.02-.04-.03-.08-.01-.12l2.24-9.2s.04-.08.08-.11c.04-.03.08-.04.12-.03l4.6.54s.08.03.1.06c.02.04.03.08.01.12l-.32%2C1.32s-.04.08-.08.11Z%27%2F%3E%20%3Cpath%20class%3D%27cls-3%27%20d%3D%27M148.16%2C49.22c-.15-.2-.22-.43-.19-.69.04-.37.19-.66.45-.86s.56-.29.9-.25c.29.03.5.14.65.33.15.19.2.42.17.69-.04.35-.19.63-.46.86-.26.22-.56.31-.88.27-.28-.03-.49-.15-.65-.34ZM148.88%2C46.18s-.03-.08-.01-.12l1.24-5.96s.04-.08.08-.11c.04-.03.08-.04.12-.03l1.57.18s.08.03.1.06c.02.04.03.08.01.12l-1.63%2C5.91s-.04.08-.08.11c-.04.03-.08.04-.12.04l-1.19-.14s-.08-.03-.1-.06Z%27%2F%3E%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E");
+}
+
+/* Button: parallelogram shape on ::before so text stays unskewed */
+.wp-block-button .wp-block-button__link,
+.wp-block-button.button-main .wp-block-button__link,
+.em .button,
+.em .em-button,
+.em-button {
+  position: relative;
+  background: none !important;
+  color: var(--wp--preset--color--base, #fff) !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  border: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 1;
+}
+
+.wp-block-button .wp-block-button__link::before,
+.wp-block-button.button-main .wp-block-button__link::before,
+.em .button::before,
+.em .em-button::before,
+.em-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--wp--preset--color--contrast, #000);
+  border-radius: 0;
+  transform: skewX(var(--button-slant));
+  box-shadow: var(--shadow, none);
+  transition: box-shadow 0.2s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button.button-main .wp-block-button__link:hover,
+.em .button:hover,
+.em .em-button:hover,
+.em-button:hover {
+  color: var(--wp--preset--color--base, #fff) !important;
+  transform: translateY(-3px);
+}
+
+.wp-block-button .wp-block-button__link:hover::before,
+.wp-block-button.button-main .wp-block-button__link:hover::before,
+.em .button:hover::before,
+.em .em-button:hover::before,
+.em-button:hover::before {
+  box-shadow: var(--shadow, none);
+}
+
+/* EM button icons: match button text color (white) */
+.em .button svg,
+.em .em-button svg,
+.em-button svg,
+.em .button [class*="icon"],
+.em .em-button [class*="icon"],
+.em-button [class*="icon"] {
+  color: var(--wp--preset--color--base, #fff);
+  fill: currentColor;
+}
+
+.wp-block-button.button-main,
+.wp-block-buttons {
+  overflow: visible;
+}
+
+/* Button style: Outline – transparent, bordered parallelogram */
+.wp-block-button.is-style-outline .wp-block-button__link {
+  color: var(--wp--preset--color--contrast, #000) !important;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link::before {
+  background-color: transparent !important;
+  border: 2px solid var(--wp--preset--color--contrast, #000);
+  box-sizing: border-box;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+  color: var(--wp--preset--color--base, #fff) !important;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link:hover::before {
+  background-color: var(--wp--preset--color--contrast, #000) !important;
+  border-color: var(--wp--preset--color--contrast, #000);
+}
+
+/* Button style: Ghost – text only, no fill until hover */
+.wp-block-button.is-style-ghost .wp-block-button__link {
+  color: var(--wp--preset--color--contrast, #000) !important;
+}
+
+.wp-block-button.is-style-ghost .wp-block-button__link::before {
+  background-color: transparent !important;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.wp-block-button.is-style-ghost .wp-block-button__link:hover::before {
+  opacity: 1;
+  background-color: var(--wp--preset--color--contrast, #000) !important;
+}
+
+.wp-block-button.is-style-ghost .wp-block-button__link:hover {
+  color: var(--wp--preset--color--base, #fff) !important;
+}
+
+/* Button style: Brand – orange gradient parallelogram */
+.wp-block-button.is-style-brand .wp-block-button__link::before {
+  background: var(--gradient-brand) !important;
+  background-color: transparent !important;
+}
+
+/* Footer CTA link: same look as main button (no button block = no editor error) */
+.footer-cols .button-main-link {
+  display: inline-block;
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  color: var(--wp--preset--color--base, #fff) !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0;
+  border: none;
+  transition: transform 0.2s ease;
+  z-index: 1;
+  background: none !important;
+}
+
+.footer-cols .button-main-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--wp--preset--color--contrast, #000);
+  border-radius: 0;
+  transform: skewX(var(--button-slant));
+  box-shadow: var(--shadow, none);
+  transition: box-shadow 0.2s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.footer-cols .button-main-link:hover {
+  color: var(--wp--preset--color--base, #fff) !important;
+  transform: translateY(-3px);
+}
+
+.footer-cols .button-main-link:hover::before {
+  box-shadow: var(--shadow, none);
+}
+
 .footer-nav ul li a::before {
-    content: "\f061";
-    display: inline-block;
-    font-family: "FontAwesome";
-    font-weight: 900;
-    font-size: 14px;
-    margin-right: 10px;
-    color: #666666;
-  }
+  content: "\f061";
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--wp--preset--color--base, #fff);
+}
 
 .footer-title:before {
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: var(--wp--preset--color--accent-1);
-    margin-right: 10px;
-    border-radius: 50%;
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--wp--preset--color--accent-3);
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+footer {
+  color: var(--wp--preset--color--base, #fff);
+  background-color: var(--wp--preset--color--contrast, #000);
+}
+
+/* Custom footer: diagonal top + 3-color gradient forced via CSS */
+.footer-diagonal {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: -1px;
+  overflow: hidden;
+  background: var(--gradient-brand) !important;
+  /* Diagonal top edge (slope-inverse: left side lowered) */
+  clip-path: polygon(0 var(--slope-inverse), 100% 0, 100% 100%, 0 100%);
+  min-height: 480px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer:has(.footer-diagonal) {
+  background-color: transparent;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+/* Footer columns: very light orange left border */
+.footer-cols.footer-cols {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-cols .footer-col {
+  border-left: 1px solid var(--wp--preset--color--base, #fff);
+  padding-left: 1.25rem;
+  min-width: 200px;
+  flex: 1 1 0;
+  max-width: 500px;
+}
+
+/* On mobile, first column needs extra padding so it doesn’t sit under the diagonal slope */
+@media (max-width: 767px) {
+  .footer-cols .footer-col:first-child {
+    margin-top: 4rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-cols .footer-col:last-child {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-cols .footer-col {
+    max-width: 500px;
+  }
+}
+
+.footer-cols .footer-col .wp-block-heading,
+.footer-cols .footer-col h2 {
+  color: var(--wp--preset--color--contrast, #000) !important;
+  text-transform: uppercase;
+}
+
+.footer-cols .footer-col h2.has-base-color.has-text-color {
+  color: var(--wp--preset--color--contrast, #000) !important;
+}
+
+/* Footer Navigation block: list-like vertical stack, no bullets */
+.footer-cols .wp-block-navigation .wp-block-navigation__container {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-cols .wp-block-navigation .wp-block-navigation-item {
+  padding: 0;
+}
+
+.footer-cols .footer-col-nav {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.footer-cols .footer-col-nav .wp-block-navigation__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Stay informed / newsletter strip below footer columns */
+.footer-stay-informed {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+}
+
+.footer-stay-informed__row {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+/* Override core :where(.wp-block-columns) margin in footer stay-informed */
+footer .wp-block-columns.footer-stay-informed,
+.footer-stay-informed.wp-block-columns {
+  margin-bottom: 0;
+}
+
+.footer-stay-informed__svg-col {
+  position: relative;
+  overflow: visible;
+  height: 140px;
+  min-height: 120px;
+  width: 220px;
+  flex-basis: 220px;
+  flex-shrink: 0;
+}
+
+.footer-stay-informed__svg-col::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  width: 100%;
+  height: 180px;
+  background-image: var(--stay-informed-svg);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: contain;
+}
+
+.footer-stay-informed__svg-wrap {
+  width: 100%;
+  min-height: 120px;
+  background-image: var(--stay-informed-svg);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: contain;
+}
+
+.footer-stay-informed__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.footer-stay-informed__label {
+  color: var(--wp--preset--color--contrast, #000);
+  margin: 0;
+}
+
+.footer-stay-informed__form-col {
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+.footer-stay-informed__input,
+.footer-stay-informed__form-col input[type="email"],
+.footer-stay-informed__form-col input[type="text"],
+.footer-stay-informed__form-col input[type="tel"],
+.footer-stay-informed__form-col textarea,
+.footer-stay-informed__form-col select {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--wp--preset--color--contrast, #000);
+  border-radius: 0;
+  min-width: 220px;
+  background-color: #fff;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+.footer-stay-informed__input::placeholder,
+.footer-stay-informed__form-col input::placeholder,
+.footer-stay-informed__form-col textarea::placeholder {
+  color: rgb(0 0 0 / 0.45);
+}
+
+.footer-stay-informed__input:focus,
+.footer-stay-informed__form-col input:focus,
+.footer-stay-informed__form-col textarea:focus,
+.footer-stay-informed__form-col select:focus {
+  outline: 2px solid var(--wp--preset--color--accent-4, #ed821f);
+  outline-offset: 1px;
+  border-color: var(--wp--preset--color--accent-4, #ed821f);
+}
+
+.footer-stay-informed__submit {
+  background: var(--wp--preset--color--primary, #e85d00) !important;
+  color: #fff !important;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.footer-stay-informed__consent {
+  width: 100%;
+  margin: 0.5rem 0 0;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+.footer-stay-informed__consent label {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .footer-stay-informed__row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-stay-informed__svg-col {
+    height: 120px;
+    min-height: 100px;
+  }
+
+  .footer-stay-informed__svg-wrap {
+    min-height: 100px;
+    background-position: center bottom;
+  }
+
+  .footer-stay-informed__form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-stay-informed__input,
+  .footer-stay-informed__form-col input[type="email"],
+  .footer-stay-informed__form-col input[type="text"],
+  .footer-stay-informed__form-col input[type="tel"],
+  .footer-stay-informed__form-col textarea,
+  .footer-stay-informed__form-col select {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Base header styles */
+header {
+  width: 100%;
+  overflow: visible;
+  /* allow header bar shadow to show */
+  transition: all 0.3s ease;
+}
+
+/* When hero is present: only the bar is fixed so the hero can scroll */
+header:has(.hero-section) {
+  position: relative;
+}
+
+header:has(.hero-section) .site-header-inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  background: var(--wp--preset--color--base, #fff);
+}
+
+/* When no hero: entire header is fixed (plain header bar only) */
+header:not(:has(.hero-section)) {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+/* Custom header bar: sloped bottom via pseudo-element so logo is not clipped */
+.site-header-bar {
+  position: relative;
+  z-index: 0;
+  align-items: center;
+  overflow: visible;
+  background: transparent !important;
+}
+
+.site-header-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--wp--preset--color--base, #fff);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--slope)));
+  z-index: -1;
+  pointer-events: none;
+}
+
+.header-logo-wrap {
+  position: relative;
+  z-index: 10;
+  min-height: 80px;
+  max-width: 400px !important;
+  align-self: stretch;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+/* Hero under header: full width, two columns; height driven by title + excerpt content */
+.hero-section:not(.featured-section) {
+  position: relative;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0 !important;
+  box-sizing: border-box;
+  background: var(--gradient-brand);
+  /* Diagonal bottom edge (slope-inverse: right side raised) */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slope-inverse)), 0 100%);
+  --hero-svg-size: 70%;
+  --hero-svg-x: 120px;
+  --hero-svg-y: 100px;
+}
+
+/* Featured section: slope at top, gradient contrast → base (reuses hero layout) */
+/* Override hero-section: no orange gradient, no hero clip-path; use own ::before for gradient + slope */
+.featured-section {
+  position: relative;
+  overflow: visible;
+  padding-top: calc(var(--slope-inverse) + var(--wp--preset--spacing--50, 0)) !important;
+  background: transparent !important;
+  clip-path: none !important;
+  color: var(--wp--preset--color--base, #fff);
+  /* Egel in image column: position and size (override to taste) */
+  --featured-egel-x: -247px;
+  --featured-egel-y: 129px;
+  --featured-egel-size: 86%;
+}
+
+/* Gradient + slope on pseudo so image column can stick out above it */
+.featured-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to right, var(--wp--preset--color--contrast, #000) 0%, color-mix(in srgb, var(--wp--preset--color--contrast, #000) 80%, transparent) 100%);
+  clip-path: polygon(0 var(--slope-inverse), 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+/* Featured section: flipped egel spans both columns (section-level pseudo) */
+.featured-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+
+}
+
+@media (min-width: 783px) {
+  .featured-section::after {
+    background-image: var(--egel-svg-flipped);
+    background-repeat: no-repeat;
+    background-position: var(--featured-egel-x) var(--featured-egel-y);
+    background-size: var(--featured-egel-size) auto;
+    opacity: 1;
+  }
+}
+
+.featured-section .featured-col-content::after {
+  display: none;
+}
+
+/* Image column: pull up so image sticks out above the slope; content above egel */
+.featured-section .featured-col-image {
+  margin-top: calc(-1 * var(--slope-inverse));
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.featured-section .featured-col-image>.featured-default-image,
+.featured-section .featured-col-image>.wp-block-image.featured-default-image {
+  position: relative;
+  inset: auto;
+  margin-top: 0;
+  z-index: 2;
+}
+
+/* Featured section: own layout (no hero inheritance) */
+.featured-section .wp-block-columns {
+  align-items: stretch;
+}
+
+.featured-section .featured-col-image {
+  position: relative;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.featured-section .featured-col-content {
+  position: relative;
+  z-index: 1;
+  background: none;
+  padding-top: var(--wp--preset--spacing--40, 1.5rem);
+  padding-bottom: var(--wp--preset--spacing--40, 1.5rem);
+  padding-right: var(--wp--preset--spacing--50, 2.5rem);
+  padding-left: var(--wp--preset--spacing--40, 1.5rem);
+  margin-block-start: 0;
+  margin-block-end: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-section .featured-col-content .featured-title-excerpt {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-left: auto;
+  padding: 1.5rem 1rem 4rem;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.featured-section .featured-col-content .featured-title-excerpt h1,
+.featured-section .featured-col-content .featured-title-excerpt .wp-block-post-excerpt,
+.featured-section .featured-col-content .featured-title-excerpt .wp-block-post-excerpt p {
+  text-align: right;
+}
+
+.featured-section .featured-col-content .wp-block-post-excerpt,
+.featured-section .featured-col-content .wp-block-post-excerpt p {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .featured-section .featured-col-content .featured-title-excerpt {
+    padding: 0;
+  }
+}
+
+@media (max-width: 782px) {
+
+  .featured-section .wp-block-columns,
+  .featured-section>.wp-block-columns {
+    flex-direction: column !important;
+    display: flex !important;
+  }
+
+  .featured-section .wp-block-column.featured-col-image,
+  .featured-section .wp-block-column.featured-col-content,
+  .featured-section .wp-block-columns .wp-block-column {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .featured-section .featured-col-image {
+    min-height: 300px;
+  }
+}
+
+.hero-section:not(.featured-section) .wp-block-columns {
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  gap: 0;
+}
+
+@media (min-width: 783px) {
+  .hero-section:not(.featured-section) .hero-col-image,
+  .hero-section:not(.featured-section) .hero-col-content,
+  .hero-section:not(.featured-section) .wp-block-column.hero-col-image,
+  .hero-section:not(.featured-section) .wp-block-column.hero-col-content {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
+
+/* Hero column one: image fills exactly half the hero row */
+.hero-section:not(.featured-section) .hero-col-image {
+  position: relative;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.hero-section:not(.featured-section) .hero-col-image > .hero-default-image,
+.hero-section:not(.featured-section) .hero-col-image > .wp-block-post-featured-image,
+.hero-section:not(.featured-section) .hero-col-image > .wp-block-image {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Featured image block must stay inside the hero column (no alignfull breakout). */
+.hero-section:not(.featured-section) .hero-col-image .wp-block-post-featured-image,
+.hero-section:not(.featured-section) .hero-col-image .wp-block-post-featured-image.alignfull,
+.hero-section:not(.featured-section) .hero-col-image .wp-block-post-featured-image.alignwide {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.hero-section:not(.featured-section) .hero-col-image figure,
+.hero-section:not(.featured-section) .hero-col-image .wp-block-post-featured-image {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: none;
+}
+
+.hero-section:not(.featured-section) .hero-col-image .hero-default-image img,
+.hero-section:not(.featured-section) .hero-col-image .wp-block-post-featured-image img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  display: block;
+  box-sizing: border-box;
+  object-fit: cover !important;
+  object-position: var(--hero-image-position, 50% 50%) !important;
+}
+
+.hero-section:not(.featured-section) .hero-col-image:has(.wp-block-post-featured-image img) .hero-default-image {
+  display: none;
+}
+
+.hero-section.hero-section--has-image:not(.featured-section) .hero-col-content::after {
+  opacity: 0.15;
+}
+
+.hero-section.hero-section--no-image:not(.featured-section) .hero-col-image {
+  min-height: 280px;
+}
+
+.hero-section.hero-section--no-image:not(.featured-section) .hero-col-content::after {
+  opacity: 0.3;
+}
+
+/* Hero column two: title + excerpt determine hero height; gradient shows through */
+.hero-section:not(.featured-section) .hero-col-content {
+  position: relative;
+  z-index: 1;
+  /* above section gradient and section::after so SVG ::before is on top */
+  background: none;
+  padding-top: var(--wp--preset--spacing--40, 1.5rem);
+  padding-bottom: var(--wp--preset--spacing--40, 1.5rem);
+  padding-right: var(--wp--preset--spacing--50, 2.5rem);
+  padding-left: var(--wp--preset--spacing--40, 1.5rem);
+  margin-block-start: 0;
+  margin-block-end: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Desktop: text clears the fixed nav; image column is unchanged so focal point stays accurate. */
+@media (min-width: 783px) {
+  header:has(.hero-section) .hero-section:not(.featured-section) .hero-col-content {
+    padding-top: calc(var(--site-header-offset) + var(--wp--preset--spacing--40, 1.5rem));
+  }
+}
+
+
+/* SVG overlay on gradient: static SVG in stylesheet; scale/position via custom properties */
+.hero-section:not(.featured-section) .hero-col-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  /* lighter: let gradient show through */
+  background-image: var(--egel-svg);
+  background-repeat: no-repeat;
+  background-position: var(--hero-svg-x) var(--hero-svg-y);
+  background-size: var(--hero-svg-size) auto;
+}
+
+.hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt {
+  padding: 0 1rem 2rem;
+}
+
+
+@media (min-width: 1024px) {
+  .hero-section:not(.featured-section) {
+    --hero-svg-size: 100%;
+    --hero-svg-x: 190px;
+    --hero-svg-y: 150px;
+  }
+
+  .hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt {
+    padding: 4rem 2rem 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    --hero-svg-size: 100%;
+    --hero-svg-x: 220px;
+    --hero-svg-y: 180px;
+  }
+
+  .hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt {
+    padding: 4rem 2rem 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section {
+    --hero-svg-size: 100%;
+    --hero-svg-x: 220px;
+    --hero-svg-y: 180px;
+  }
+
+  .hero-section:not(.featured-section) {
+    padding-right: 2.5rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt .wp-block-post-title,
+.hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt h1,
+.hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt .wp-block-post-excerpt,
+.hero-section:not(.featured-section) .hero-col-content .hero-title-excerpt .wp-block-post-excerpt p {
+  text-align: right;
+}
+
+.hero-section:not(.featured-section) .hero-col-content .wp-block-post-title,
+.hero-section:not(.featured-section) .hero-col-content h1 {
+  color: var(--wp--preset--color--base, #fff) !important;
+  text-transform: uppercase;
+}
+
+.hero-section:not(.featured-section) .hero-col-content .wp-block-post-excerpt,
+.hero-section:not(.featured-section) .hero-col-content .wp-block-post-excerpt p {
+  color: var(--wp--preset--color--base, #fff) !important;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+/* Hero: stack columns on mobile (image on top, title below); height still from content */
+@media (max-width: 782px) {
+
+  .hero-section:not(.featured-section) .wp-block-columns,
+  .hero-section:not(.featured-section)>.wp-block-columns {
+    flex-direction: column !important;
+    display: flex !important;
+  }
+
+  .hero-section:not(.featured-section) .wp-block-column.hero-col-image,
+  .hero-section:not(.featured-section) .wp-block-column.hero-col-content,
+  .hero-section:not(.featured-section) .wp-block-columns .wp-block-column {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-section:not(.featured-section) .hero-col-image {
+    min-height: 400px;
+  }
+}
+
+/* Header logo and buttons: half size on mobile, buttons stacked */
+@media (max-width: 782px) {
+  :root {
+    --site-header-offset: calc(60px + 2rem);
+  }
+
+  .header-logo-wrap img,
+  .site-header-bar .header-logo-wrap img {
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 60px !important;
+  }
+
+  .header-logo-wrap {
+    min-height: 40px;
+  }
+}
+
+/* Logo: Image block with link (href) – keep above slope so link is clickable */
+.header-logo-wrap .wp-block-image,
+.header-logo-wrap .header-logo {
+  position: absolute !important;
+  left: 0;
+  top: 0.75rem;
+  margin: 0 !important;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+@media (max-width: 782px) {
+
+  .header-logo-wrap .wp-block-image,
+  .header-logo-wrap .header-logo,
+  .site-header-bar .header-logo-wrap .wp-block-image,
+  .site-header-bar .header-logo-wrap .header-logo {
+    transform: translateY(calc(50% - 40px)) !important;
+  }
+}
+
+.header-logo-wrap .wp-block-image a,
+.header-logo-wrap .header-logo a {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.header-logo-wrap img {
+  width: 90px !important;
+  height: 90px !important;
+  max-width: 90px !important;
+}
+
+/* Override when using custom header bar: wrapper transparent so area under slope shows scrolling content */
+header:has(.site-header-bar)>div {
+  padding: 1rem !important;
+}
+
+/* Bar background is on ::after (slope); bar itself transparent so logo is not clipped */
+header .site-header-bar {
+  background-color: transparent !important;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+header .header-logo img {
+  transition: height 0.3s ease;
+}
+
+header .nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* Cover section */
+#site-header .header-cover {
+  width: 100%;
+  height: 300px;
+  /* large cover height */
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+#site-header .header-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Shrunk state */
+#site-header.header-shrink .header-cover {
+  height: 0;
+  opacity: 0;
+}
+
+#site-header.header-shrink .header-logo img {
+  height: 40px;
+}
+
+
+.wp-block-cover {
+  box-shadow:var(--shadow, none);
+}
+
+.em-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+/* Events Manager (wp-events-plugin.com) overrides – use class selectors (e.g. .em-item-image) */
+.em-item-image img {
+  max-width: 200px;
+}
+
+.em-item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 2rem 1rem;
+}
+
+.em-item-info h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.em-item a {
+  text-decoration: none;
+  color: var(--wp--preset--color--contrast, #000);
+}
+
+
+.em-item-desc {
+  padding-bottom: 1rem;
 }

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "stemlp/carousel",
+  "version": "1.0.0",
+  "title": "Posts carousel",
+  "category": "widgets",
+  "icon": "slides",
+  "description": "Display posts from a selected category in a carousel with title and featured image.",
+  "textdomain": "stemlp",
+  "attributes": {
+    "categoryId": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [ "wide", "full" ]
+  },
+  "editorScript": "file:./editor.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

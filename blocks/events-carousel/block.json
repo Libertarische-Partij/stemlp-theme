@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "stemlp/events-carousel",
+  "version": "1.0.0",
+  "title": "Events carousel",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Display upcoming events from Events Manager in a carousel (requires Events Manager plugin).",
+  "textdomain": "stemlp",
+  "attributes": {
+    "limit": {
+      "type": "number",
+      "default": 10
+    },
+    "order": {
+      "type": "string",
+      "default": "start_asc",
+      "enum": [ "start_asc", "start_desc" ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [ "wide", "full" ]
+  },
+  "editorScript": "file:./editor.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}
