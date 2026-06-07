@@ -372,11 +372,11 @@ function stemlp_filter_template_parts_in_editor( $query_result, $query, $templat
 add_filter( 'get_block_templates', 'stemlp_filter_template_parts_in_editor', 10, 3 );
 
 /**
- * Template parts that always render from theme files (footer only).
- * Header is editable in the Site Editor; saves are stored in the database.
+ * Template parts that always render from theme files.
+ * Footer and header use the database in the Site Editor so menus and layout edits persist.
  */
 function stemlp_file_backed_template_parts() {
-  return array( 'footer' );
+  return array();
 }
 
 /**
@@ -404,7 +404,7 @@ function stemlp_rest_filter_template_parts_list( $response, $server, $request ) 
     $slug = $data['slug'];
     $file = $parts_dir . $slug . '.html';
     if ( $slug && in_array( $slug, $file_backed, true ) && is_readable( $file ) ) {
-      $raw = (string) file_get_contents( $file );
+      $raw = stemlp_prepare_file_backed_template_content( (string) file_get_contents( $file ), $slug );
       $data['content'] = is_array( $data['content'] ?? null )
         ? array_merge( (array) $data['content'], array( 'raw' => $raw ) )
         : array( 'raw' => $raw );
@@ -428,7 +428,7 @@ function stemlp_rest_filter_template_parts_list( $response, $server, $request ) 
     if ( $theme === $our_theme && ! empty( $item['slug'] ) ) {
       $file = $parts_dir . $item['slug'] . '.html';
       if ( in_array( $item['slug'], $file_backed, true ) && is_readable( $file ) ) {
-        $raw = (string) file_get_contents( $file );
+        $raw = stemlp_prepare_file_backed_template_content( (string) file_get_contents( $file ), $item['slug'] );
         $item['content'] = is_array( $item['content'] ?? null )
           ? array_merge( (array) $item['content'], array( 'raw' => $raw ) )
           : array( 'raw' => $raw );
@@ -458,7 +458,7 @@ function stemlp_force_template_part_content_from_file( $block_template, $id, $te
   }
   $file = get_stylesheet_directory() . '/parts/' . $slug . '.html';
   if ( is_readable( $file ) ) {
-    $block_template->content = (string) file_get_contents( $file );
+    $block_template->content = stemlp_prepare_file_backed_template_content( (string) file_get_contents( $file ), $slug );
   }
   return $block_template;
 }
@@ -481,7 +481,7 @@ function stemlp_render_template_part_from_theme_file( $block_content, $block ) {
     return $block_content;
   }
 
-  $content = (string) file_get_contents( $file );
+  $content = stemlp_prepare_file_backed_template_content( (string) file_get_contents( $file ), $slug );
   $content = shortcode_unautop( $content );
   $content = do_shortcode( $content );
   $content = do_blocks( $content );
@@ -573,27 +573,128 @@ add_filter( 'render_block_core/template-part', 'stemlp_ensure_header_part_logo_l
  * @param string $slug Navigation post slug, e.g. footer-menu-1.
  */
 function stemlp_get_footer_navigation_post( $slug ) {
-  static $cache = array();
-  $slug         = sanitize_title( $slug );
+  $slug = sanitize_title( $slug );
   if ( $slug === '' ) {
     return null;
   }
-  if ( ! array_key_exists( $slug, $cache ) ) {
-    $posts = get_posts(
-      array(
-        'name'                   => $slug,
-        'post_type'              => 'wp_navigation',
-        'post_status'            => 'publish',
-        'posts_per_page'         => 1,
-        'no_found_rows'          => true,
-        'update_post_meta_cache' => false,
-        'update_post_term_cache' => false,
-      )
-    );
-    $cache[ $slug ] = ! empty( $posts[0] ) ? $posts[0] : null;
+  $cache_key = 'footer_nav_' . $slug;
+  $cached    = wp_cache_get( $cache_key, 'stemlp_footer_nav' );
+  if ( $cached !== false ) {
+    return $cached ? $cached : null;
   }
-  return $cache[ $slug ];
+  $posts = get_posts(
+    array(
+      'name'                   => $slug,
+      'post_type'              => 'wp_navigation',
+      'post_status'            => 'publish',
+      'posts_per_page'         => 1,
+      'no_found_rows'          => true,
+      'update_post_meta_cache' => false,
+      'update_post_term_cache' => false,
+    )
+  );
+  $post = ! empty( $posts[0] ) ? $posts[0] : null;
+  wp_cache_set( $cache_key, $post ? $post : 0, 'stemlp_footer_nav' );
+  return $post;
 }
+
+/**
+ * Footer menu slots mapped to wp_navigation post slugs.
+ *
+ * @return array<string, string> slug => default title
+ */
+function stemlp_footer_navigation_menu_slots() {
+  return array(
+    'footer-menu-1' => __( 'Informatie', 'stemlp' ),
+    'footer-menu-2' => __( 'Steun ons', 'stemlp' ),
+  );
+}
+
+/**
+ * Create footer wp_navigation posts when missing (e.g. after first deploy).
+ */
+function stemlp_ensure_footer_navigation_menus() {
+  foreach ( stemlp_footer_navigation_menu_slots() as $slug => $title ) {
+    if ( stemlp_get_footer_navigation_post( $slug ) ) {
+      continue;
+    }
+    $post_id = wp_insert_post(
+      array(
+        'post_type'    => 'wp_navigation',
+        'post_status'  => 'publish',
+        'post_title'   => $title,
+        'post_name'    => $slug,
+        'post_content' => '',
+      ),
+      true
+    );
+    if ( ! is_wp_error( $post_id ) ) {
+      wp_cache_delete( 'footer_nav_' . $slug, 'stemlp_footer_nav' );
+    }
+  }
+}
+
+/**
+ * One-time upgrade: ensure DB footer template links menus and navigation posts exist.
+ */
+function stemlp_upgrade_footer_navigation_setup() {
+  if ( get_option( 'stemlp_footer_navigation_ready' ) ) {
+    return;
+  }
+  stemlp_ensure_footer_navigation_menus();
+
+  $footer_posts = get_posts(
+    array(
+      'post_type'              => 'wp_template_part',
+      'name'                   => 'footer',
+      'posts_per_page'         => 1,
+      'post_status'            => array( 'publish', 'draft' ),
+      'no_found_rows'          => true,
+      'update_post_meta_cache' => false,
+      'update_post_term_cache' => false,
+      'tax_query'              => array(
+        array(
+          'taxonomy' => 'wp_theme',
+          'field'    => 'name',
+          'terms'    => get_stylesheet(),
+        ),
+      ),
+    )
+  );
+
+  if ( ! empty( $footer_posts[0] ) ) {
+    $footer_post = $footer_posts[0];
+    $needs_refs  = strpos( $footer_post->post_content, 'stemlp-nav-footer-menu-1' ) !== false
+      && strpos( $footer_post->post_content, '"ref"' ) === false;
+    if ( $needs_refs ) {
+      $file = get_stylesheet_directory() . '/parts/footer.html';
+      if ( is_readable( $file ) ) {
+        wp_update_post(
+          array(
+            'ID'           => $footer_post->ID,
+            'post_content' => stemlp_prepare_file_backed_template_content( (string) file_get_contents( $file ), 'footer' ),
+          )
+        );
+      }
+    }
+  }
+
+  update_option( 'stemlp_footer_navigation_ready', 1, false );
+}
+add_action( 'init', 'stemlp_upgrade_footer_navigation_setup', 20 );
+
+/**
+ * Bust footer navigation lookup cache when a menu is saved.
+ */
+function stemlp_flush_footer_navigation_cache( $post_id ) {
+  if ( get_post_type( $post_id ) !== 'wp_navigation' ) {
+    return;
+  }
+  foreach ( array_keys( stemlp_footer_navigation_menu_slots() ) as $slug ) {
+    wp_cache_delete( 'footer_nav_' . $slug, 'stemlp_footer_nav' );
+  }
+}
+add_action( 'save_post_wp_navigation', 'stemlp_flush_footer_navigation_cache' );
 
 /**
  * Extract footer navigation slug from stemlp-nav-* or stemlp-nav-title-* class names.
@@ -606,6 +707,73 @@ function stemlp_footer_navigation_slug_from_class( $class_name ) {
     return $matches[1];
   }
   return '';
+}
+
+/**
+ * Inject footer navigation refs and titles into file-backed template part markup.
+ */
+function stemlp_prepare_file_backed_template_content( $content, $slug ) {
+  if ( $slug !== 'footer' || ! is_string( $content ) || $content === '' ) {
+    return $content;
+  }
+  $content = stemlp_inject_footer_navigation_refs_in_blocks( $content );
+  return stemlp_inject_footer_navigation_titles( $content );
+}
+
+/**
+ * Set ref on footer Navigation blocks so the editor loads the linked wp_navigation post.
+ */
+function stemlp_inject_footer_navigation_refs_in_blocks( $content ) {
+  $blocks = parse_blocks( $content );
+  if ( empty( $blocks ) ) {
+    return $content;
+  }
+  return serialize_blocks( stemlp_apply_footer_navigation_refs( $blocks ) );
+}
+
+/**
+ * Recursively attach wp_navigation post IDs to footer Navigation blocks.
+ *
+ * @param array<int, array<string, mixed>> $blocks Parsed blocks.
+ * @return array<int, array<string, mixed>>
+ */
+function stemlp_apply_footer_navigation_refs( $blocks ) {
+  foreach ( $blocks as $index => $block ) {
+    if ( ( $block['blockName'] ?? '' ) === 'core/navigation' ) {
+      $slug = stemlp_footer_navigation_slug_from_class( $block['attrs']['className'] ?? '' );
+      if ( $slug !== '' ) {
+        $navigation_post = stemlp_get_footer_navigation_post( $slug );
+        if ( $navigation_post ) {
+          $blocks[ $index ]['attrs']['ref'] = (int) $navigation_post->ID;
+        }
+      }
+    }
+    if ( ! empty( $block['innerBlocks'] ) ) {
+      $blocks[ $index ]['innerBlocks'] = stemlp_apply_footer_navigation_refs( $block['innerBlocks'] );
+    }
+  }
+  return $blocks;
+}
+
+/**
+ * Fill empty footer menu headings with the linked wp_navigation post title.
+ */
+function stemlp_inject_footer_navigation_titles( $content ) {
+  return preg_replace_callback(
+    '/<h3([^>]*class="[^"]*stemlp-nav-title-[^"]*"[^>]*)>\s*<\/h3>/',
+    function ( $matches ) {
+      $slug = stemlp_footer_navigation_slug_from_class( $matches[1] );
+      if ( $slug === '' ) {
+        return $matches[0];
+      }
+      $navigation_post = stemlp_get_footer_navigation_post( $slug );
+      if ( ! $navigation_post ) {
+        return $matches[0];
+      }
+      return '<h3' . $matches[1] . '>' . esc_html( $navigation_post->post_title ) . '</h3>';
+    },
+    $content
+  );
 }
 
 /**
@@ -629,7 +797,7 @@ function stemlp_footer_navigation_block_data( $parsed_block ) {
 add_filter( 'render_block_data', 'stemlp_footer_navigation_block_data', 10, 1 );
 
 /**
- * Footer heading: use the linked navigation post title; hide when navigation is missing.
+ * Footer menu column heading: keep editor text; fall back to linked navigation post title when empty.
  */
 function stemlp_footer_navigation_title( $block_content, $block ) {
   if ( ( $block['blockName'] ?? '' ) !== 'core/heading' ) {
@@ -639,13 +807,20 @@ function stemlp_footer_navigation_title( $block_content, $block ) {
   if ( strpos( $class_name, 'stemlp-nav-title-' ) === false ) {
     return $block_content;
   }
+  if ( ! preg_match( '/<h3[^>]*>([\s\S]*?)<\/h3>/', $block_content, $matches ) ) {
+    return $block_content;
+  }
+  $existing_title = trim( wp_strip_all_tags( $matches[1] ) );
+  if ( $existing_title !== '' ) {
+    return $block_content;
+  }
   $slug = stemlp_footer_navigation_slug_from_class( $class_name );
   if ( $slug === '' ) {
     return $block_content;
   }
   $navigation_post = stemlp_get_footer_navigation_post( $slug );
-  if ( ! $navigation_post ) {
-    return '';
+  if ( ! $navigation_post || trim( $navigation_post->post_title ) === '' ) {
+    return $block_content;
   }
   return preg_replace(
     '/(<h3[^>]*>)([\s\S]*?)(<\/h3>)/',
@@ -668,6 +843,9 @@ function stemlp_footer_navigation_render( $block_content, $block ) {
     return $block_content;
   }
   if ( ! stemlp_get_footer_navigation_post( $slug ) ) {
+    if ( ! empty( $block['attrs']['ref'] ) && trim( $block_content ) !== '' ) {
+      return $block_content;
+    }
     return '';
   }
   return $block_content;
